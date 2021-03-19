@@ -1,19 +1,42 @@
 import React, { FC } from 'react';
 import Filters from '../components/Filters';
-import Menu from '../components/Menu';
-import MoviesList from '../components/MovieList';
+import Sort from '../components/Menu';
+import MoviesList, { MovieInterface } from '../components/MovieList';
+import styled from "styled-components";
+
+export const ContentStyled = styled.div`
+padding: 30px;
+  display: flex;
+  flex-direction: column;
+  background: #484848;
+  flex-grow: 1;
+  
+`;
+
+export const ContentHeaderStyled = styled.div`
+  
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  border-bottom: 1px solid;
+  align-items: flex-end;
+`;
 
 
-const ContentLayout: FC = () => {
+interface Content {
+    moviesList: MovieInterface[];
+}
+
+const ContentLayout: FC<Content> = ({ moviesList }) => {
 
     return (
-        <>
-            <div>
-                <Menu />
+        <ContentStyled>
+            <ContentHeaderStyled>
                 <Filters />
-            </div>
-            <MoviesList />
-        </>);
+                <Sort />
+            </ContentHeaderStyled>
+            <MoviesList sortedMovies={moviesList} />
+        </ContentStyled>);
 }
 
 export default ContentLayout;

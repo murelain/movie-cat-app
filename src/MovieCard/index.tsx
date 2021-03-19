@@ -1,19 +1,14 @@
 import React, { FC } from 'react';
+import { MovieInterface } from '../components/MovieList';
 
-const MovieCard: FC<MovieCardInterface> = ({ title, description }) => {
+const MovieCard: FC<{ movie: MovieInterface }> = ({ movie }) => {
 
     return (
         <div className="MovieCard">
-            <h3>{title}</h3>
-            <h3>{description}</h3>
+            <h3>{movie.title}</h3>
+            <img width="200px" height="350px" src={movie.posterUrl} />
         </div>
     );
-}
-
-interface MovieCardInterface {
-    title: string,
-    description: string,
-    coverUrl: string,
 }
 
 
