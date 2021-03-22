@@ -1,9 +1,6 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import styled from 'styled-components';
 import MovieCard from '../../MovieCard';
-
-
-
 
 const StyledMoviesList = styled.div`
     display: flex;
@@ -30,15 +27,18 @@ interface MoviesListInterface {
 const MoviesList: FC<MoviesListInterface> = ({ sortedMovies }) => {
 
     return (
-        <StyledMoviesList>
+        <>
+            <StyledMoviesList>
 
-            {sortedMovies.map(movie => (
-                <MovieCardContainerStyled>
-                    <MovieCard movie={movie}></MovieCard>
-                </MovieCardContainerStyled>))}
+                {sortedMovies.map(movie => (
+                    <MovieCardContainerStyled>
+                        <MovieCard movie={movie}></MovieCard>
+                    </MovieCardContainerStyled>))}
 
-        </StyledMoviesList>
-    );
+            </StyledMoviesList>
+
+
+        </>);
 }
 
 export default MoviesList;

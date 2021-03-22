@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Filters from '../components/Filters';
 import Sort from '../components/Menu';
 import MoviesList, { MovieInterface } from '../components/MovieList';
@@ -24,19 +24,20 @@ export const ContentHeaderStyled = styled.div`
 
 
 interface Content {
-    moviesList: MovieInterface[];
+  moviesList: MovieInterface[];
 }
 
 const ContentLayout: FC<Content> = ({ moviesList }) => {
 
-    return (
-        <ContentStyled>
-            <ContentHeaderStyled>
-                <Filters />
-                <Sort />
-            </ContentHeaderStyled>
-            <MoviesList sortedMovies={moviesList} />
-        </ContentStyled>);
+  return (
+    <ContentStyled>
+      <ContentHeaderStyled>
+        <Filters />
+        <Sort />
+      </ContentHeaderStyled>
+      <MoviesList sortedMovies={moviesList} />
+
+    </ContentStyled>);
 }
 
 export default ContentLayout;
