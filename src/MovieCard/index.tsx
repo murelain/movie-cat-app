@@ -1,6 +1,6 @@
 import { IconButton, Menu, MenuItem } from '@material-ui/core';
 import React, { FC, useState } from 'react';
-import { MovieInterface } from '../components/MovieList';
+import { MovieInterface } from "../shared/types";
 
 import styled from "styled-components";
 import MovieEditDialog from '../components/MovieEditDialog';

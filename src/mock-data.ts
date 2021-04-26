@@ -1,4 +1,6 @@
-export const MOVIES = [
+import { MovieInterface } from "./shared/types";
+
+export const MOVIES: MovieInterface[] = [
   {
     id: "1",
     title: "Game Night",
