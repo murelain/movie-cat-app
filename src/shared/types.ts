@@ -1,18 +1,17 @@
-
 export interface MovieInterface {
-    title: string,
-    description?: string,
-    posterUrl: string,
-    id: string,
-    genres?: string[],
-    releaseDate?: string,
+  title?: string;
+  description?: string;
+  posterUrl?: string;
+  id?: string;
+  genres?: string[];
+  releaseDate?: string;
 }
 
 export interface StateInterface {
-    movies: MovieInterface[];
+  movies: MovieInterface[];
 }
 
 export interface ActionInterface {
-    type: string,
-    payload: any,
+  type: string;
+  payload: any;
 }
