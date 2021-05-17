@@ -1,7 +1,10 @@
 import { Button, TextField } from '@material-ui/core';
 import React, { FC, useState } from 'react';
 import MovieEditDialog from '../components/MovieEditDialog';
+import { MovieInterface } from "../shared/types";
+import { store } from '../redux/store';
 import { HeaderStyled, SearchContainerStyled, HeaderTopStyled, TextFieldStyled } from './styles';
+import { addMovie } from '../redux/actions';
 
 const Header: FC = () => {
 
@@ -11,8 +14,9 @@ const Header: FC = () => {
         setOpen(true);
     };
 
-    const handleClose = () => {
+    const handleConfirm = (newMovie: MovieInterface) => {
         setOpen(false);
+        store.dispatch(addMovie(newMovie));
     };
 
     return (
@@ -25,7 +29,7 @@ const Header: FC = () => {
                 <TextFieldStyled id="standard-basic" variant="filled" color="secondary" />
                 <Button color="secondary" variant="contained">Search</Button>
             </SearchContainerStyled>
-            <MovieEditDialog title="Add movie" open={open} onConfirm={handleClose} onCancel={handleClose} />
+            <MovieEditDialog title="Add movie" open={open} onConfirm={handleConfirm} onCancel={() => { }} />
         </HeaderStyled>
     );
 }

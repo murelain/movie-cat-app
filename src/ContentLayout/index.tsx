@@ -1,8 +1,9 @@
 import React, { FC, useState } from 'react';
 import Filters from '../components/Filters';
 import Sort from '../components/Menu';
-import MoviesList, { MovieInterface } from '../components/MovieList';
+import MoviesList from '../components/MovieList';
 import styled from "styled-components";
+import { MovieInterface } from '../shared/types';
 
 export const ContentStyled = styled.div`
 padding: 30px;

@@ -6,7 +6,7 @@ import DialogContent from '@material-ui/core/DialogContent';
 import DialogTitle from '@material-ui/core/DialogTitle';
 import { TextField } from '@material-ui/core';
 import styled from 'styled-components';
-import { MovieInterface } from '../MovieList';
+import { MovieInterface } from '../../shared/types';
 
 const FormFiledsContainerStyled = styled.div`
     display: flex;
@@ -16,11 +16,18 @@ const FormFiledsContainerStyled = styled.div`
 interface MovieEditDialogInterface {
     title: string;
     open: boolean;
-    onConfirm: () => void;
+    onConfirm: (movie: MovieInterface) => void;
     onCancel: () => void;
     editMovie?: MovieInterface;
 }
 const MovieEditDialog: FC<MovieEditDialogInterface> = ({ title = 'Edit Movie', open, onConfirm, onCancel, editMovie }) => {
+
+    const onSubmit = () => {
+        if (editMovie) {
+            onConfirm(editMovie);
+        }
+    }
+
     return (
         <div>
 
@@ -66,7 +73,7 @@ const MovieEditDialog: FC<MovieEditDialogInterface> = ({ title = 'Edit Movie', o
                     <Button onClick={onCancel} color="primary">
                         Discard
           </Button>
-                    <Button onClick={onConfirm} color="secondary" autoFocus>
+                    <Button onClick={onSubmit} color="secondary" autoFocus>
                         Save
           </Button>
                 </DialogActions>

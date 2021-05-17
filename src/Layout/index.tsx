@@ -1,20 +1,23 @@
 import React, { FC } from 'react';
-import { MovieInterface } from '../components/MovieList';
+import { connect } from 'react-redux';
+import { MovieInterface, StateInterface } from "../shared/types";
 import ContentLayout from '../ContentLayout';
 import Header from '../Header';
-import { MOVIES } from '../mock-data';
+
+function mapStateToProps(state: StateInterface) {
+    const { movies } = state;
+    return { moviesList: movies }
+}
 
 
-const Layout: FC = () => {
-
-    const movies = MOVIES as unknown as MovieInterface[];
+const Layout: FC<{ moviesList: MovieInterface[] }> = ({ moviesList }) => {
 
     return (
         <>
             <Header />
-            <ContentLayout moviesList={movies} />
+            <ContentLayout moviesList={moviesList} />
         </>
     );
 }
 
-export default Layout;
+export default connect(mapStateToProps)(Layout);
